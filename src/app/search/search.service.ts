@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 export class SearchService {
   private keywordSource = new BehaviorSubject<string>('');
   currentKeyword = this.keywordSource.asObservable();
-
+  
   constructor() { }
 
   keywordChanged(keyword: string): void {

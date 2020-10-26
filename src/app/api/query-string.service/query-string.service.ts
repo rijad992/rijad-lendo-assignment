@@ -20,7 +20,6 @@ export class QueryStringService {
 
     let out = qs.length ? `&${qs.join('&')}` : '';
 
-    console.log('qs', out);
     return out;
   }
 }

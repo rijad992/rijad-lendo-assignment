@@ -8,10 +8,10 @@
                 *ngFor="let item of listToView$ | async" >
                 <div class="card-item__outer">
                     <app-card 
-                        [title]="item.title" 
+                        [title]="item.name" 
                         [imageUrl]="item.poster_path" 
                         [rating]="item.vote_average" 
-                        [releaseDate]="item.release_date">
+                        [releaseDate]="item.first_air_date">
                     </app-card>
                 </div>
             </div>
