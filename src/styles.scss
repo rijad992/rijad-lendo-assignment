@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import './styles/styles-imports';
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: $background-primary;
+    color: $font-primary;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.list-view-container {
+    width: 100vw;
+    height: 100vh;
+    background-color: $background-primary;
+    display: flex;
+    text-align: center;
+    position: relative;
+
+    &__inner {
+        width: 100%;
+        margin: 0 100px;
+        height: auto;
+        display: flex;
+        flex-flow: column wrap;
+        text-align: center;
+        padding: 100px 0;
+    }
+}
+
+@media screen and (max-width: $breakpoint-small-device) {
+    .list-view-container {
+        height: 100%;
+    }
+}
+

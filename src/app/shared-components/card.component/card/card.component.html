@@ -1,0 +1,16 @@
+<div class="card-item__outer">
+    <div class="card-item__inner">
+        <div class="card-item__image--outer">
+            <div class="card-item__image--inner">
+                <img src="https://image.tmdb.org/t/p/w500/{{imageUrl}}" [@zoomImage]="showOverlay ? 'true' : 'false'">
+                <div class="card-item__overlay" *ngIf="showOverlay" [@inOutAnimation]>
+                    <div class="card-item__overlay--movie-info-container">
+                        <span class="card-item__title">{{title}}</span>
+                        <span class="card-item__release-date">{{releaseDate | date:'yyyy'}}</span>
+                        <div class="card-item__rating" >{{rating}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

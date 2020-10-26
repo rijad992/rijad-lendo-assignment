@@ -1,0 +1,24 @@
+<div class="list-view-container">
+    <div class="list-view-container__inner">
+        <app-navigation-bar></app-navigation-bar>
+        <app-search-bar></app-search-bar>
+        <div class="card-list-container" 
+            [ngStyle]="{'justifyContent': (listToView$ | async).length ? 'left' : 'center'}">
+            <div class="card-item__container" 
+                *ngFor="let item of listToView$ | async" >
+                <div class="card-item__outer">
+                    <app-card 
+                        [title]="item.title" 
+                        [imageUrl]="item.poster_path" 
+                        [rating]="item.vote_average" 
+                        [releaseDate]="item.release_date">
+                    </app-card>
+                </div>
+            </div>
+            <div style="align-self: center;" 
+                *ngIf="!(listToView$ | async).length">
+                <span>No results found</span>
+            </div>
+        </div>
+    </div>
+</div>
