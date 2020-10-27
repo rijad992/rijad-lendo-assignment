@@ -1,23 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { debounceTime } from 'rxjs/operators'
-import { TopRatedTvshowsResponse } from '../interfaces/interfaces';
+import { TopRatedMoviesResponse } from '../interfaces/interfaces';
 
-import { TvshowsService } from '../tvshows.service/tvshows.service';
+import { MoviesService } from '../movies.service/movies.service';
 import { SearchService } from '../../search/search.service';
 
 @Component({
-  selector: 'app-tvshows',
-  templateUrl: './tvshows.component.html',
-  styleUrls: ['./tvshows.component.scss']
+  selector: 'app-list-movies',
+  templateUrl: './list-movies.component.html',
+  styleUrls: ['./list-movies.component.scss']
 })
-export class TvshowsComponent implements OnInit {
-  list$: Observable<TopRatedTvshowsResponse[]>;
-  listToView$: Observable<TopRatedTvshowsResponse[]>;
+export class ListMovies implements OnInit {
+  list$: Observable<TopRatedMoviesResponse[]>;
+  listToView$: Observable<TopRatedMoviesResponse[]>;
 
-  constructor(private api: TvshowsService, private searchService: SearchService) { }
+  constructor(private api: MoviesService, private searchService: SearchService) { }
 
   ngOnInit(): void {
+
     this.searchService.currentKeyword
       .pipe(
         debounceTime(1000)

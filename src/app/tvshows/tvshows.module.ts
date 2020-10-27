@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { TvshowsRoutingModule } from './tvshows-routing.module';
-import { TvshowsComponent } from './tvshows.component/tvshows.component';
+import { ListTvshowsComponent } from './list-tvshows.component/list-tvshows.component';
 import { NavigationModule } from '../navigation/navigation.module';
 import { ApiModule } from '../api/api.module';
 import { UtilsModule } from '../utils/utils.module';
@@ -10,7 +10,7 @@ import { SharedComponentsModule } from '../shared-components/shared-components.m
 import { TvshowsService } from './tvshows.service/tvshows.service';
 
 @NgModule({
-  declarations: [TvshowsComponent],
+  declarations: [ListTvshowsComponent],
   imports: [
     CommonModule,
     TvshowsRoutingModule,

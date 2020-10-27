@@ -35,6 +35,8 @@ body {
     }
 }
 
+[hidden] { display: none !important;}
+
 @media screen and (max-width: $breakpoint-small-device) {
     .list-view-container {
         height: 100%;

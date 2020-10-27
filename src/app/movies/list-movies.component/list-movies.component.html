@@ -8,7 +8,8 @@
                         [title]="item.title" 
                         [imageUrl]="item.poster_path" 
                         [rating]="item.vote_average" 
-                        [releaseDate]="item.release_date">
+                        [releaseDate]="item.release_date"
+                        [routerLink]="[item.id]">
                     </app-card>
                 </div>
             </div>
