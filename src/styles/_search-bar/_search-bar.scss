@@ -1,10 +1,10 @@
 .group 			  { 
-  position:relative; 
-  margin: 10px 25px;
+  position:relative;
+  margin: 0 10px;
 
   &>input 				{
     font-size:18px;
-    padding:10px 10px 10px 5px;
+    padding: 10px 5px;
     color: $font-primary;
     display:block;
     width:100%;
@@ -32,17 +32,12 @@
   }
 }
 
-/* LABEL ======================================= */
-
-
-/* active state */
 input:focus ~ label, input:valid ~ label 		{
   top:-20px;
   font-size:14px;
   color: $primary;
 }
 
-/* BOTTOM BARS ================================= */
 .bar 	{ 
     position:relative; 
     display:block; 
@@ -69,12 +64,10 @@ input:focus ~ label, input:valid ~ label 		{
     }
 }
 
-/* active state */
 input:focus ~ .bar:before, input:focus ~ .bar:after {
   width:50%;
 }
 
-/* HIGHLIGHTER ================================== */
 .highlight {
   position:absolute;
   height:60%; 
@@ -85,14 +78,12 @@ input:focus ~ .bar:before, input:focus ~ .bar:after {
   opacity:0.5;
 }
 
-/* active state */
 input:focus ~ .highlight {
   -webkit-animation:inputHighlighter 0.3s ease;
   -moz-animation:inputHighlighter 0.3s ease;
   animation:inputHighlighter 0.3s ease;
 }
 
-/* ANIMATIONS ================ */
 @-webkit-keyframes inputHighlighter {
 	from { background: $primary; }
   to 	{ width:0; background:transparent; }
@@ -104,5 +95,11 @@ input:focus ~ .highlight {
 @keyframes inputHighlighter {
 	from { background: $primary }
   to 	{ width:0; background:transparent; }
+}
+
+@media screen and (max-width: $breakpoint-small-device) {
+  .group {
+    margin-top: 50px;
+  }
 }
 

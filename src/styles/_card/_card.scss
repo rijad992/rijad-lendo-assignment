@@ -1,13 +1,18 @@
 .card-item {
     &__container {
         box-sizing: border-box;
-        padding: 20px;
-        flex-basis: 25%;
         height: 550px;
+        width: 367px;
         overflow: hidden;
+        flex-basis: 25%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+
     }
     &__outer {
         background-color: transparent;
+        width: 367px;
     }
     
     &__image--inner {
@@ -89,16 +94,21 @@
     
 }
 
-
-
-@media screen and (max-width: $breakpoint-small-device) {
+@media screen and (max-width:  1600px) {
     .card-item {
         &__container {
-            flex-basis: 100%;
-        }
-
-        &__rating {
-            visibility: hidden;
+            flex-basis: 33.33%;
         }
     }
 }
+
+@media screen and (max-width:  1200px) {
+    .card-item {
+        &__container {
+            flex-basis: 50%;
+        }
+    }
+}
+
+
+

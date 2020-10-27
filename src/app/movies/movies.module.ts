@@ -8,7 +8,6 @@ import { ApiModule } from '../api/api.module';
 import { UtilsModule } from '../utils/utils.module';
 import { SharedComponentsModule } from '../shared-components/shared-components.module';
 import { MoviesService } from './movies.service/movies.service';
-import { SearchModule } from '../search/search.module';
 
 @NgModule({
   declarations: [MoviesComponent],
@@ -18,8 +17,7 @@ import { SearchModule } from '../search/search.module';
     NavigationModule,
     ApiModule,
     UtilsModule,
-    SharedComponentsModule,
-    SearchModule
+    SharedComponentsModule
   ],
   providers: [MoviesService]
 })

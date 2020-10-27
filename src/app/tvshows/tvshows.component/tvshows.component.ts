@@ -18,18 +18,15 @@ export class TvshowsComponent implements OnInit {
   constructor(private api: TvshowsService, private searchService: SearchService) { }
 
   ngOnInit(): void {
-    this.listToView$ = this.list$ = this.api.getTopRated();
-
     this.searchService.currentKeyword
       .pipe(
         debounceTime(1000)
       )
       .subscribe(keyword => {
-        //no need to make new request for top10, its highley likely that it wont change during our search
         if (keyword.length >= 3) {
           this.listToView$ = this.api.searchMovies({ query: encodeURIComponent(keyword) });
         } else {
-          this.listToView$ = this.list$;
+          this.listToView$ = this.api.getTopRated();
         }
       });
   }

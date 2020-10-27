@@ -1,9 +1,6 @@
 <div class="list-view-container">
     <div class="list-view-container__inner">
-        <app-navigation-bar></app-navigation-bar>
-        <app-search-bar></app-search-bar>
-        <div class="card-list-container" 
-            [ngStyle]="{'justifyContent': (listToView$ | async)?.length ? 'left' : 'center'}">
+        <div class="card-list-container">
             <div class="card-item__container" 
                 *ngFor="let item of listToView$ | async" >
                 <div class="card-item__outer">
@@ -15,10 +12,7 @@
                     </app-card>
                 </div>
             </div>
-            <div style="align-self: center;" 
-                *ngIf="(listToView$ | async) != null && !(listToView$ | async)?.length">
-                <span>No results found</span>
-            </div>
+            <app-no-results class="width-100 height-100" *ngIf="(listToView$ | async) != null && !(listToView$ | async)?.length"></app-no-results>
         </div>
     </div>
 </div>

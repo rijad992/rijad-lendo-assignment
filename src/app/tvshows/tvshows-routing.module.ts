@@ -4,7 +4,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { TvshowsComponent } from './tvshows.component/tvshows.component';
 
 
-const routes: Routes = [{ path: '', component: TvshowsComponent }];
+const routes: Routes = [{ 
+  path: '', component: TvshowsComponent,
+ }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

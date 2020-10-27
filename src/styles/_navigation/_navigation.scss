@@ -1,7 +1,8 @@
 .nav-bar-container {
     list-style: none;
     display: flex;
-
+    padding: 0;
+    
     &>li {
         padding: 10px;
 

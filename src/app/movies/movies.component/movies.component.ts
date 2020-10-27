@@ -18,7 +18,6 @@ export class MoviesComponent implements OnInit {
   constructor(private api: MoviesService, private searchService: SearchService) { }
 
   ngOnInit(): void {
-    this.listToView$ = this.list$ = this.api.getTopRated();
 
     this.searchService.currentKeyword
       .pipe(
@@ -28,7 +27,7 @@ export class MoviesComponent implements OnInit {
         if (keyword.length >= 3) {
           this.listToView$ = this.api.searchMovies({ query: encodeURIComponent(keyword) });
         } else {
-          this.listToView$ = this.list$;
+          this.listToView$ = this.api.getTopRated();
         }
       });
   }
