@@ -6,7 +6,7 @@ import { DetailMoviesComponent } from './detail-movies.component/detail-movies.c
 
 const routes: Routes = [
   { path: '', component: ListMovies, data:{showTopbar: true} },
-  { path: ':id', component: DetailMoviesComponent, data:{showTopbar: false}}
+  { path: ':id', component: DetailMoviesComponent, data:{showTopbar: 0}}
 ];
 
 @NgModule({

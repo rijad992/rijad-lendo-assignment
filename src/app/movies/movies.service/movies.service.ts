@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 
-import { map } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 import { orderBy, slice } from 'lodash-es';
 
 import { ApiService } from 'src/app/api/api.service/api.service';
 import { Observable } from 'rxjs';
-import { MovieSearchQueryParams, TopRatedExtResponse, TopRatedMoviesResponse } from '../interfaces/interfaces';
+import { MovieDetailsResponse, MovieDetailsVideosExtResponse, MovieDetailsTrailerResponse, MovieSearchQueryParams, TopRatedExtResponse, TopRatedMoviesResponse } from '../interfaces/interfaces';
 import { QueryStringService } from 'src/app/api/query-string.service/query-string.service';
 
 
@@ -34,6 +34,18 @@ export class MoviesService {
           return slice(orderBy(res.results, ['vote_average'], ['desc']), 0, 10)
         })
       );
+  }
+
+  getDetail(id: number): Observable<MovieDetailsResponse> {
+      return this.api.get<MovieDetailsResponse>(`movie/${id}`);
+  }
+
+  getDetailVideos(id: number): Observable<MovieDetailsTrailerResponse[]> {
+    return this.api.get<MovieDetailsVideosExtResponse>(`movie/${id}/videos`).pipe(
+      map(({results}) => {
+        return results.filter(r => r && r.type == 'Trailer');
+      })
+    );
   }
 
 }

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 
 
@@ -8,33 +9,34 @@ import { filter, map } from 'rxjs/operators';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   title = 'rijad-lendo-assignment';
-  showTopbar = true;
+  showTopbar: boolean;
+  sub: Subscription;
   constructor(private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    this.router
+    this.sub = this.router
       .events
       .pipe(
         filter(event => event instanceof NavigationEnd),
         map(() => {
           let child = this.activatedRoute.firstChild;
           while (child) {
-            console.log('child',child)
             if (child.firstChild) {
               child = child.firstChild;
             } else if (child.snapshot.data && child.snapshot.data['showTopbar']) {
               return child.snapshot.data['showTopbar'];
             } else {
-              return null;
+              return false;
             }
           }
-          return null;
+          return false;
         })
-      )
-      .subscribe((showTopbar: boolean) => {
-        this.showTopbar = showTopbar;
-      });
+      ).subscribe(show => this.showTopbar = show);
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 }

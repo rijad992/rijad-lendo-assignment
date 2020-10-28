@@ -1,10 +1,10 @@
 .card-item {
     &__container {
         box-sizing: border-box;
-        height: 550px;
+        height: 500px;
         width: 367px;
         overflow: hidden;
-        flex-basis: 25%;
+        flex-basis: 20%;
         display: flex;
         justify-content: center;
         margin-bottom: 30px;
@@ -17,13 +17,14 @@
     
     &__image--inner {
         position: relative;
-        max-height: 550px;
+        max-height: 500px;
         overflow: hidden;
         justify-content: center;
         align-items: center;
         display: flex;
         &>img {
-            height: 550px;
+            height: 500px;
+            width: 367px;
             align-self: center;
             
         }
@@ -32,7 +33,7 @@
 
     &__overlay {
         position: absolute;
-        height: 550px;
+        height: 500px;
         width: 100%;
         backdrop-filter: blur(6px);
         background-color: $card-overlay-primary;

@@ -19,9 +19,9 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
       ]
     ),
     trigger('zoomImage', [
-      state('true', style({ height: '570px' })),
-      state('false', style({ height: '550px' })),
-      transition('false <=> true', animate(500))
+      state('true', style({ height: '530px' })),
+      state('false', style({ height: '500px' })),
+      transition('false <=> true', animate(200))
     ])
   ]
 })

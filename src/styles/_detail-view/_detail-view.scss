@@ -1,0 +1,61 @@
+
+.back-button {
+    &__container {
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        padding: 30px 0;
+    }
+    color: $font-primary;
+    font-size: 50px;
+    transition: 0.3s;
+    opacity: 0.2;
+    
+}
+
+.back-button:hover {
+    color: $primary;
+    transition: 0.3s;
+    opacity: 1;
+}
+
+.detail__header {
+    &--container--inner {
+        height: 100vh;
+        flex: 1;
+        display: flex;
+    }
+    &--title--container {
+        display: flex;
+        height: 100%;
+        margin: 0 100px;
+        justify-content: center;
+        align-items: center;
+    }
+    &--video--container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+    }
+    &--video--inner {
+        border-radius: 3%;
+        overflow: hidden;
+    }
+
+}
+
+.h1-title {
+    position: relative;
+    &:after {
+        position: absolute;
+        content: '';
+        height: 2px;
+        bottom: -4px;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background-color: $primary;
+    }
+}

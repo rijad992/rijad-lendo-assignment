@@ -10,3 +10,22 @@ export interface TopRatedMoviesResponse {
 export interface MovieSearchQueryParams {
     query: string;
 }
+export interface MovieDetailsResponse {
+    title: string,
+    video: boolean,
+    vote_average: number
+}
+
+export interface MovieDetailsVideosExtResponse {
+    id : number,
+    results: MovieDetailsTrailerResponse[]
+}
+
+export interface MovieDetailsTrailerResponse {
+    id: string,
+    key: string,
+    name: string,
+    site: string,
+    size: number,
+    type: string
+}

@@ -4,9 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ListTvshowsComponent } from './list-tvshows.component/list-tvshows.component';
 
 
-const routes: Routes = [{ 
-  path: '', component: ListTvshowsComponent,
- }];
+const routes: Routes = [{path: '', component: ListTvshowsComponent, data: {showTopbar: true}}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

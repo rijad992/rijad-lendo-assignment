@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+
 @import './_variables/variables';
 
 @import './_navigation/navigation';
@@ -6,3 +10,5 @@
 @import './_scroll-bar/scroll-bar';
 @import './_search-bar/search-bar';
 @import './_layout/layout';
+@import './_detail-view/detail-view';
+@import './_spinner/spinner'

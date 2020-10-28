@@ -1,1 +1,30 @@
-<p>detail-movies works!</p>
+<div class="display-flex flex-column">
+    <div class="back-button__container">
+        <a [routerLink]="['/movies']" class="back-button" title="BACK">
+            <i class="fas fa-arrow-circle-left"></i>
+        </a>
+    </div>
+
+    
+    
+    <div class="display-flex flex-column height-100"
+        *ngIf="movie$ | async as movie; else loading">
+        <div class="detail__header--container">
+            <div class="detail__header--container--inner">
+                <div class="detail__header--title--container">
+                    <div class="display-flex"><h1 class="h1-title">{{movie.title}} ({{movie.release_date | date:'yyyy'}})</h1></div>
+                </div>
+                <div class="detail__header--video--container">
+                    <div class="detail__header--video--inner">
+                        <iframe width="900" height="506" [src]="resolveVideoUrl(movie.trailers[0].site, movie.trailers[0].key)" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #loading>
+        <div class="spinner"></div>
+    </ng-template>
+    
+</div>
+
