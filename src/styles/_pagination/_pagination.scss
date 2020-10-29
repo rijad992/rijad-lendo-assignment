@@ -1,0 +1,35 @@
+.pagination {
+    &__container {
+        width: 150px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        &>button {
+            border: none;
+            text-decoration: none;
+            background: transparent;
+            color: $font-primary;
+
+        }
+        button:disabled,
+        button[disabled]{
+            border: none;
+            text-decoration: none;
+            background: transparent;
+            color: $font-primary;
+            opacity: 0.5;
+        }
+    }
+
+    &__arrow {
+        font-size: 30px;
+        transition: 200;
+    }
+
+    &__arrow:hover {
+        transition: 200;
+        color: $primary;
+    }
+    
+}

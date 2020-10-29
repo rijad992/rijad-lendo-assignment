@@ -22,7 +22,7 @@ body {
 
     &__inner {
         width: 100%;
-        margin: 0 0;
+        margin: 0;
         height: auto;
         display: flex;
         flex-flow: column wrap;
@@ -39,7 +39,7 @@ body {
 
 [hidden] { display: none !important;}
 
-@media screen and (max-width: $breakpoint-small-device) {
+@media screen and (max-width: $l-device) {
     .list-view-container {
         height: 100%;
     }

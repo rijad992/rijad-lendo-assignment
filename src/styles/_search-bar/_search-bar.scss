@@ -97,7 +97,7 @@ input:focus ~ .highlight {
   to 	{ width:0; background:transparent; }
 }
 
-@media screen and (max-width: $breakpoint-small-device) {
+@media screen and (max-width: $l-device) {
   .group {
     margin-top: 50px;
   }

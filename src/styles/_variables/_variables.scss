@@ -7,7 +7,13 @@ $card-overlay-primary:  rgba(17, 17, 17, 0.623);
 $primary: rgb(225,70,78);
 
 //screen breakpoints
-$breakpoint-small-device: 960px;
+
+$xs-device-size: 600px;
+$s-device-size: 600px;
+$m-device: 768px;
+$l-device: 992px;
+$xl-device: 1200px;
+
 
 //zindex
 $zindex-menu: 1500;
