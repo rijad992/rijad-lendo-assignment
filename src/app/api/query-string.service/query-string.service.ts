@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { forEach, merge } from 'lodash-es';
+import { forEach } from 'lodash-es';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +11,11 @@ export class QueryStringService {
   constructor() { }
 
   composeQueryString(params: object): string {
-    let qsObject = merge(params, QueryStringService.DEFAULT_PARAMS);
+    let qsObject = Object.assign(params, QueryStringService.DEFAULT_PARAMS);
     let qs = [];
 
     forEach(qsObject, (val, key) => {
+      console.log(val, key)
       qs.push(`${key}=${val}`);
     });
 

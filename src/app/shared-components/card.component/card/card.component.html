@@ -2,7 +2,7 @@
     <div class="card-item__inner">
         <div class="card-item__image--outer">
             <div class="card-item__image--inner">
-                <img src="https://image.tmdb.org/t/p/w500/{{imageUrl}}" [@zoomImage]="showOverlay ? 'true' : 'false'">
+                <img src="https://image.tmdb.org/t/p/w500/{{imageUrl}}" [@zoomImage]="showOverlay ? 'true' : 'false'" alt="Image not available">
                 <div class="card-item__overlay" *ngIf="showOverlay" [@inOutAnimation]>
                     <div class="card-item__overlay--movie-info-container">
                         <span class="card-item__title">{{title}}</span>

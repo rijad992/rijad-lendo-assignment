@@ -1,0 +1,6 @@
+<div class="pagination__container"
+    *ngIf="searchKeyword.length > 2">
+    <button #previous class="pagination__arrow" [disabled]="currentPage == 1"><i style="cursor: pointer" class="fas fa-arrow-alt-circle-left"></i></button>
+    <span style="cursor:default">{{currentPage}} : {{totalPages}}</span>
+    <button #next class="pagination__arrow" [disabled]="currentPage == totalPages"><i style="cursor: pointer" class="fas fa-arrow-alt-circle-right"></i></button>
+</div>

@@ -1,5 +1,6 @@
 export interface TopRatedExtResponse {
-    results: TopRatedTvshowsResponse[]
+    results: TopRatedTvshowsResponse[];
+    total_pages: number;
 }
 
 export interface TopRatedTvshowsResponse {
@@ -9,6 +10,7 @@ export interface TopRatedTvshowsResponse {
 
 export interface TvshowsSearchQueryParams {
     query: string;
+    page: number;
 }
 
 export interface TvshowDetailsResponse {
@@ -19,7 +21,8 @@ export interface TvshowDetailsResponse {
 
 export interface TvshowDetailsVideosExtResponse {
     id : number,
-    results: TvshowDetailsTrailerResponse[]
+    results: TvshowDetailsTrailerResponse[],
+    total_pages: number
 }
 
 export interface TvshowDetailsTrailerResponse {

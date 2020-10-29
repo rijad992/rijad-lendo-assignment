@@ -16,6 +16,7 @@ import {
   MoveDetailsImagesExtResponse 
 } from '../interfaces/interfaces';
 import { QueryStringService } from 'src/app/api/query-string.service/query-string.service';
+import { tap } from 'lodash';
 
 
 @Injectable({
@@ -25,22 +26,24 @@ export class MoviesService {
 
   constructor(private api: ApiService, private queryStringService: QueryStringService) { }
 
-  getTopRated(): Observable<TopRatedMoviesResponse[]> {
+  getTopRated(): Observable<TopRatedExtResponse> {
     return this.api.get<TopRatedExtResponse>('movie/top_rated')
       .pipe(
         map((res) => {
-          return slice(orderBy(res.results, ['vote_average'], ['desc']), 0, 10)
+          res.results = slice(orderBy(res.results, ['vote_average'], ['desc']), 0, 10);
+          return res;
         })
       );
   }
 
-  searchMovies(queryParams: MovieSearchQueryParams): Observable<TopRatedMoviesResponse[]> {
+  searchMovies(queryParams: MovieSearchQueryParams): Observable<TopRatedExtResponse> {
     let queryString = this.queryStringService.composeQueryString(queryParams);
 
     return this.api.get<TopRatedExtResponse>('search/movie', queryString)
       .pipe(
         map((res) => {
-          return slice(orderBy(res.results, ['vote_average'], ['desc']), 0, 10)
+          res.results = orderBy(res.results, ['vote_average'], ['desc']);
+          return res;
         })
       );
   }

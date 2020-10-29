@@ -1,19 +1,38 @@
 <div class="list-view-container">
     <div class="list-view-container__inner">
-        <div class="card-list-container">
-            <div class="card-item__container" 
-                *ngFor="let item of listToView$ | async" >
-                <div class="card-item__outer">
-                    <app-card 
-                        [title]="item.name" 
-                        [imageUrl]="item.poster_path" 
-                        [rating]="item.vote_average" 
-                        [releaseDate]="item.first_air_date"
-                        [routerLink]="[item.id]">
-                    </app-card>
-                </div>
-            </div>
-            <app-no-results class="width-100 height-100" *ngIf="(listToView$ | async) != null && !(listToView$ | async)?.length"></app-no-results>
+        <div class="card-list-container__header">
+            <h2 *ngIf="searchKeyword.length < 3">TMDB Top 10</h2>
+            <h2 *ngIf="searchKeyword.length > 2">Search results</h2>
+            <app-pagination 
+                *ngIf="searchKeyword.length > 2 && resultsLength" 
+                class="display-flex flex-center-x flex-center-y"
+                [searchKeyword]="searchKeyword"
+                [currentPage]="currentPage"
+                [totalPages]="totalPages"
+                (pageChange)="search($event)">
+            </app-pagination>
         </div>
+        <div class="card-list-container" *ngIf="listToView$ | async as list; else loading">
+                <div class="card-list-container__inner">
+                    <div class="card-item__container"
+                        *ngFor="let item of list.results" >
+                        <div class="card-item__outer">
+                            <app-card 
+                                [title]="item.name" 
+                                [imageUrl]="item.poster_path" 
+                                [rating]="item.vote_average" 
+                                [releaseDate]="item.first_air_date"
+                                [routerLink]="[item.id]">
+                            </app-card>
+                        </div>
+                    </div>
+                </div>
+            <app-no-results class="width-100 height-100" *ngIf="!list.results.length"></app-no-results>
+        </div>
+        <ng-template #loading>
+            <div class="fullscreen-spinner">
+                <div class="spinner"></div>
+            </div>
+        </ng-template>
     </div>
 </div>

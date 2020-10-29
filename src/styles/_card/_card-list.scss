@@ -1,8 +1,18 @@
 .card-list-container {
-    flex: 1;
     display: flex;
-    flex-wrap: wrap;
-    margin: 50px 50px 100px 50px;
+    flex-direction: column;
+
+    &__inner {
+        flex: 1;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 50px 50px 100px 50px;
+    }
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        margin: 0 50px;
+    }
 
     &::-webkit-scrollbar {
         width: 20px;
@@ -14,12 +24,50 @@
         border-radius: 10px;
     }
 }
+
+.pagination {
+    &__container {
+        width: 150px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        &>button {
+            border: none;
+            text-decoration: none;
+            background: transparent;
+            color: $font-primary;
+
+        }
+        button:disabled,
+        button[disabled]{
+            border: none;
+            text-decoration: none;
+            background: transparent;
+            color: $font-primary;
+            opacity: 0.5;
+        }
+    }
+
+    &__arrow {
+        font-size: 30px;
+        transition: 200;
+    }
+
+    &__arrow:hover {
+        transition: 200;
+        color: $primary;
+    }
+    
+}
 @media screen and (max-width: $breakpoint-small-device) {
     .card-list-container {
-        flex-direction: column;
-        justify-content: center;
-        flex-wrap: nowrap;
-        align-items: center;
+        &__inner {
+            flex-direction: column;
+            justify-content: center;
+            flex-wrap: nowrap;
+            align-items: center;
+        }
     }
     
 }
