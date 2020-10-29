@@ -1,28 +1,28 @@
 <div class="display-flex flex-column">
     <div class="back-button__container">
-        <a [routerLink]="['/movies']" class="back-button" title="BACK">
+        <a [routerLink]="['/tvshows']" class="back-button" title="BACK">
             <i class="fas fa-arrow-circle-left"></i>
         </a>
     </div>
     
     <div class="display-flex flex-column height-100"
-        *ngIf="movie$ | async as movie; else loading">
+        *ngIf="show$ | async as show; else loading">
         <div class="detail__header--container">
             <div class="detail__header--container--inner">
                 <div class="detail__header--title--container">
                     <div class="display-flex flex-column">
-                        <h1 class="h1-title">{{movie.title}} ({{movie.release_date | date:'yyyy'}})</h1>
+                        <h1 class="h1-title">{{show.name}} ({{show.first_air_date | date:'yyyy'}})</h1>
                         <h3>Description:</h3>
-                        <h4>{{movie.overview}}</h4>
+                        <h4>{{show.overview}}</h4>
                     </div>
                 </div>
                 <div class="detail__header--video--container">
-                    <div class="detail__header--video--inner" *ngIf="movie.trailers.length || !movie.backdrops.length">
-                        <iframe width="900" height="506" [src]="resolveVideoUrl(movie.trailers[0].site, movie.trailers[0].key)" frameborder="0" allowfullscreen></iframe>
+                    <div class="detail__header--video--inner" *ngIf="show.trailers.length || !show.backdrops.length">
+                        <iframe width="900" height="506" [src]="resolveVideoUrl(show.trailers[0].site, show.trailers[0].key)" frameborder="0" allowfullscreen></iframe>
                     </div>
                     <img style="width: 900px; border-radius: 2%;" 
-                        src="https://image.tmdb.org/t/p/original{{movie.backdrops[0].file_path}}" 
-                        *ngIf="!movie.trailers.length">
+                        src="https://image.tmdb.org/t/p/original{{show.backdrops[0].file_path}}" 
+                        *ngIf="!show.trailers.length">
                 </div>
             </div>
         </div>

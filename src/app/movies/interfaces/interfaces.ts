@@ -11,8 +11,7 @@ export interface MovieSearchQueryParams {
     query: string;
 }
 export interface MovieDetailsResponse {
-    title: string,
-    video: boolean,
+    name: string,
     vote_average: number
 }
 
@@ -28,4 +27,16 @@ export interface MovieDetailsTrailerResponse {
     site: string,
     size: number,
     type: string
+}
+
+export interface MoveDetailsImagesExtResponse {
+    id: number,
+    backdrops: MovieDetailsBackDrops[]
+}
+
+export interface MovieDetailsBackDrops {
+    aspect_ratio: number,
+    file_path: string,
+    height: number,
+    width: number
 }

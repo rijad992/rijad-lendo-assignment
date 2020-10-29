@@ -31,12 +31,13 @@
         margin: 0 100px;
         justify-content: center;
         align-items: center;
+        flex: 1
     }
     &--video--container {
         display: flex;
         justify-content: center;
         align-items: center;
-        flex: 1;
+        flex: 2;
     }
     &--video--inner {
         border-radius: 3%;

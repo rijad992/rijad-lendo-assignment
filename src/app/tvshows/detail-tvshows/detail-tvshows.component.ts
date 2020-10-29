@@ -3,27 +3,27 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { forkJoin, Observable } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
-import { MoviesService } from '../movies.service/movies.service';
+import { TvshowsService } from '../tvshows.service/tvshows.service';
 import {
-  MovieDetailsBackDrops,
-  MovieDetailsResponse,
-  MovieDetailsTrailerResponse
+  TvshowDetailsBackDrops,
+  TvshowDetailsResponse,
+  TvshowDetailsTrailerResponse
 } from '../interfaces/interfaces';
 
 
-interface MovieDetailsExtResponse extends MovieDetailsResponse {
-  trailers: MovieDetailsTrailerResponse[],
-  backdrops: MovieDetailsBackDrops[]
+interface MovieDetailsExtResponse extends TvshowDetailsResponse {
+  trailers: TvshowDetailsTrailerResponse[],
+  backdrops: TvshowDetailsBackDrops[]
 };
 @Component({
-  selector: 'app-detail-movies',
-  templateUrl: './detail-movies.component.html',
-  styleUrls: ['./detail-movies.component.scss']
+  selector: 'app-detail-tvshows',
+  templateUrl: './detail-tvshows.component.html',
+  styleUrls: ['./detail-tvshows.component.scss']
 })
-export class DetailMoviesComponent implements OnInit {
+export class DetailTvshowsComponent implements OnInit {
 
   id: number;
-  movie$: Observable<MovieDetailsExtResponse>;
+  show$: Observable<MovieDetailsExtResponse>;
 
   private static videoHost = {
     'YouTube': {
@@ -32,10 +32,10 @@ export class DetailMoviesComponent implements OnInit {
     }
   }
 
-  constructor(private route: ActivatedRoute, private api: MoviesService, private sanitizer: DomSanitizer) { }
+  constructor(private route: ActivatedRoute, private api: TvshowsService, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
-    this.movie$ = this.route.params.pipe(
+    this.show$ = this.route.params.pipe(
       switchMap(params => {
         return forkJoin([
           this.api.getDetail(params['id']),
@@ -49,8 +49,8 @@ export class DetailMoviesComponent implements OnInit {
   }
 
   resolveVideoUrl(host: string, urlCode: string): SafeResourceUrl {
-    const url = DetailMoviesComponent.videoHost[host].url;
-    const qs = DetailMoviesComponent.videoHost[host].qs || '';
+    const url = DetailTvshowsComponent.videoHost[host].url;
+    const qs = DetailTvshowsComponent.videoHost[host].qs || '';
     let videoUrl: SafeResourceUrl;
 
     videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(`${url}/${urlCode}${qs ? qs : ''}`);

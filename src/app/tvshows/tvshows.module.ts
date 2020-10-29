@@ -8,9 +8,10 @@ import { ApiModule } from '../api/api.module';
 import { UtilsModule } from '../utils/utils.module';
 import { SharedComponentsModule } from '../shared-components/shared-components.module';
 import { TvshowsService } from './tvshows.service/tvshows.service';
+import { DetailTvshowsComponent } from './detail-tvshows/detail-tvshows.component';
 
 @NgModule({
-  declarations: [ListTvshowsComponent],
+  declarations: [ListTvshowsComponent, DetailTvshowsComponent],
   imports: [
     CommonModule,
     TvshowsRoutingModule,

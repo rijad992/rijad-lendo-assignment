@@ -1,11 +1,20 @@
 import { Injectable } from '@angular/core';
 
-import { filter, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { orderBy, slice } from 'lodash-es';
 
 import { ApiService } from 'src/app/api/api.service/api.service';
 import { Observable } from 'rxjs';
-import { MovieDetailsResponse, MovieDetailsVideosExtResponse, MovieDetailsTrailerResponse, MovieSearchQueryParams, TopRatedExtResponse, TopRatedMoviesResponse } from '../interfaces/interfaces';
+import { 
+  MovieDetailsResponse, 
+  MovieDetailsVideosExtResponse, 
+  MovieDetailsTrailerResponse, 
+  MovieSearchQueryParams, 
+  TopRatedExtResponse, 
+  TopRatedMoviesResponse, 
+  MovieDetailsBackDrops, 
+  MoveDetailsImagesExtResponse 
+} from '../interfaces/interfaces';
 import { QueryStringService } from 'src/app/api/query-string.service/query-string.service';
 
 
@@ -46,6 +55,16 @@ export class MoviesService {
         return results.filter(r => r && r.type == 'Trailer');
       })
     );
+  }
+
+  getDetailImages(id: number): Observable<MovieDetailsBackDrops[]> {
+    let queryString = this.queryStringService.composeQueryString({language: 'en,null'});
+
+    return this.api.get<MoveDetailsImagesExtResponse>(`movie/${id}/images`, queryString).pipe(
+      map(({backdrops}) => {
+        return orderBy(backdrops, ['vote_average'], ['desc']);
+      })
+    );;
   }
 
 }
