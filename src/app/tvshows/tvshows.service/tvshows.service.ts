@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { orderBy, slice } from 'lodash-es';
 
-import { ApiService } from 'src/app/api/api.service/api.service';
+import { ApiService } from '../../api/api.service/api.service';
 import { Observable } from 'rxjs';
 import {
   TvshowsSearchQueryParams,
@@ -14,7 +14,7 @@ import {
   TvshowDetailsImagesExtResponse,
   TvshowDetailsVideosExtResponse
 } from '../interfaces/interfaces';
-import { QueryStringService } from 'src/app/api/query-string.service/query-string.service';
+import { QueryStringService } from '../../api/query-string.service/query-string.service';
 
 
 @Injectable({
