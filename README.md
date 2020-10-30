@@ -5,7 +5,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Requirements
 
 Node v12+
-AngularCLI V10+
+
+AngularCLI v10+
 
 ## Run 
 
