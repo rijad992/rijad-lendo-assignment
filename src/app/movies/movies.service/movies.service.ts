@@ -10,8 +10,7 @@ import {
   MovieDetailsVideosExtResponse, 
   MovieDetailsTrailerResponse, 
   MovieSearchQueryParams, 
-  TopRatedExtResponse, 
-  TopRatedMoviesResponse, 
+  MoviesListExtResponse, 
   MovieDetailsBackDrops, 
   MoveDetailsImagesExtResponse 
 } from '../interfaces/interfaces';
@@ -26,8 +25,8 @@ export class MoviesService {
 
   constructor(private api: ApiService, private queryStringService: QueryStringService) { }
 
-  getTopRated(): Observable<TopRatedExtResponse> {
-    return this.api.get<TopRatedExtResponse>('movie/top_rated')
+  getTopRated(): Observable<MoviesListExtResponse> {
+    return this.api.get<MoviesListExtResponse>('movie/top_rated')
       .pipe(
         map((res) => {
           res.results = slice(orderBy(res.results, ['vote_average'], ['desc']), 0, 10);
@@ -36,16 +35,10 @@ export class MoviesService {
       );
   }
 
-  searchMovies(queryParams: MovieSearchQueryParams): Observable<TopRatedExtResponse> {
+  searchMovies(queryParams: MovieSearchQueryParams): Observable<MoviesListExtResponse> {
     let queryString = this.queryStringService.composeQueryString(queryParams);
 
-    return this.api.get<TopRatedExtResponse>('search/movie', queryString)
-      .pipe(
-        map((res) => {
-          res.results = orderBy(res.results, ['vote_average'], ['desc']);
-          return res;
-        })
-      );
+    return this.api.get<MoviesListExtResponse>('search/movie', queryString);
   }
 
   getDetail(id: number): Observable<MovieDetailsResponse> {

@@ -7,7 +7,7 @@ import { ApiService } from 'src/app/api/api.service/api.service';
 import { Observable } from 'rxjs';
 import {
   TvshowsSearchQueryParams,
-  TopRatedExtResponse,
+  TvshowsListExtResponse,
   TvshowDetailsResponse,
   TvshowDetailsTrailerResponse,
   TvshowDetailsBackDrops,
@@ -24,8 +24,8 @@ export class TvshowsService {
 
   constructor(private api: ApiService, private queryStringService: QueryStringService) { }
 
-  getTopRated(): Observable<TopRatedExtResponse> {
-    return this.api.get<TopRatedExtResponse>('tv/top_rated')
+  getTopRated(): Observable<TvshowsListExtResponse> {
+    return this.api.get<TvshowsListExtResponse>('tv/top_rated')
       .pipe(
         map((res) => {
           res.results = slice(orderBy(res.results, ['vote_average'], ['desc']), 0, 10);
@@ -34,16 +34,10 @@ export class TvshowsService {
       );
   }
 
-  searchShows(queryParams: TvshowsSearchQueryParams): Observable<TopRatedExtResponse> {
+  searchShows(queryParams: TvshowsSearchQueryParams): Observable<TvshowsListExtResponse> {
     let queryString = this.queryStringService.composeQueryString(queryParams);
 
-    return this.api.get<TopRatedExtResponse>('search/tv', queryString)
-      .pipe(
-        map((res) => {
-          res.results = orderBy(res.results, ['vote_average'], ['desc']);
-          return res;
-        })
-      );
+    return this.api.get<TvshowsListExtResponse>('search/tv', queryString);
   }
 
   getDetail(id: number): Observable<TvshowDetailsResponse> {

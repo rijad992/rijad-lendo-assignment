@@ -16,13 +16,13 @@
                         <h4>{{show.overview}}</h4>
                     </div>
                 </div>
-                <div class="detail__header--video--container">
-                    <div class="detail__header--video--inner" *ngIf="show.trailers.length || !show.backdrops.length">
+                <div class="detail__header--video--container" *ngIf="show.trailers.length || show.backdrops.length">
+                    <div class="detail__header--video--inner" *ngIf="show.trailers.length">
                         <iframe width="900" height="506" [src]="resolveVideoUrl(show.trailers[0].site, show.trailers[0].key)" frameborder="0" allowfullscreen></iframe>
                     </div>
                     <img style="width: 900px; border-radius: 2%;" 
                         src="https://image.tmdb.org/t/p/original{{show.backdrops[0].file_path}}" 
-                        *ngIf="!show.trailers.length">
+                        *ngIf="!show.trailers.length && show.backdrops.length">
                 </div>
             </div>
         </div>

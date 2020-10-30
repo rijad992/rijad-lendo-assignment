@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { debounceTime, tap } from 'rxjs/operators'
-import { TopRatedExtResponse } from '../interfaces/interfaces';
+import { TvshowsListExtResponse } from '../interfaces/interfaces';
 
 import { TvshowsService } from '../tvshows.service/tvshows.service';
 import { SearchService } from '../../search/search.service';
@@ -12,7 +12,7 @@ import { SearchService } from '../../search/search.service';
   styleUrls: ['./list-tvshows.component.scss']
 })
 export class ListTvshowsComponent implements OnInit {
-  listToView$: Observable<TopRatedExtResponse>;
+  listToView$: Observable<TvshowsListExtResponse>;
   searchSub: Subscription;
   currentPage: number = 1;
   searchKeyword: string = '';
@@ -27,6 +27,10 @@ export class ListTvshowsComponent implements OnInit {
         debounceTime(1000)
       )
       .subscribe(keyword => {
+        if (this.searchKeyword != keyword) {
+          this.currentPage = 1;
+        }
+        
         this.searchKeyword = keyword;
         if (keyword.length >= 3) {
           this.listToView$ = this.api.searchShows({ query: encodeURIComponent(keyword), page: this.currentPage }).pipe(

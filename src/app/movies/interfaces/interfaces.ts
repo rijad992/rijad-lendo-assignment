@@ -1,11 +1,6 @@
-export interface TopRatedExtResponse {
-    results: TopRatedMoviesResponse[];
+export interface MoviesListExtResponse {
+    results: MovieDetailsResponse[];
     total_pages: number;
-}
-
-export interface TopRatedMoviesResponse {
-    title: string;
-    vote_average: number;
 }
 
 export interface MovieSearchQueryParams {

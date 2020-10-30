@@ -1,11 +1,6 @@
-export interface TopRatedExtResponse {
-    results: TopRatedTvshowsResponse[];
+export interface TvshowsListExtResponse {
+    results: TvshowDetailsResponse[];
     total_pages: number;
-}
-
-export interface TopRatedTvshowsResponse {
-    name: string,
-    vote_average: number
 }
 
 export interface TvshowsSearchQueryParams {
@@ -14,7 +9,7 @@ export interface TvshowsSearchQueryParams {
 }
 
 export interface TvshowDetailsResponse {
-    title: string,
+    name: string,
     video: boolean,
     vote_average: number
 }

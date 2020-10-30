@@ -16,13 +16,13 @@
                         <h4 class="detail__header--description">{{movie.overview}}</h4>
                     </div>
                 </div>
-                <div class="detail__header--video--container flex-order-xs-2">
-                    <div class="detail__header--video--inner" *ngIf="movie.trailers.length || !movie.backdrops.length">
+                <div class="detail__header--video--container flex-order-xs-2" *ngIf="movie.trailers.length || movie.backdrops.length">
+                    <div class="detail__header--video--inner" *ngIf="movie.trailers.length">
                         <iframe class="detail__header--iframe" [src]="resolveVideoUrl(movie.trailers[0].site, movie.trailers[0].key)" frameborder="0" allowfullscreen></iframe>
                     </div>
                     <img style="width: 900px; border-radius: 2%;" 
                         src="https://image.tmdb.org/t/p/original{{movie.backdrops[0].file_path}}" 
-                        *ngIf="!movie.trailers.length">
+                        *ngIf="!movie.trailers.length && movie.backdrops.length">
                 </div>
             </div>
         </div>
